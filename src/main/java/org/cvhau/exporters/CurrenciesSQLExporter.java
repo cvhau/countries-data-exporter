@@ -13,11 +13,11 @@ public class CurrenciesSQLExporter {
     public static void export() throws Exception {
         String outputResourceFilename = "currencies.sql";
 
-        List<Currency> countries = CurrenciesResource.getCurrencies();
+        List<Currency> currencies = CurrenciesResource.getCurrencies();
 
         StringBuilder sqlContent = new StringBuilder("INSERT INTO `currencies` (`id`, `code`, `description`, `kind`, `source_uri`) VALUES\n");
 
-        countries.forEach(currency -> {
+        currencies.forEach(currency -> {
             String id = String.format("%3s", currency.getId()).replace(' ', '0');
             String code = currency.getCode();
             String description = currency.getDescription();
